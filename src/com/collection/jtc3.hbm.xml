@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.collection.jtc3" table="student" schema="system">
+<id name="sid" column="sid" type="int">
+<generator class="increment"/>
+</id>
+<property name="sname"/>
+<property name="dob"/>
+<property name="qualification" column="quali"/>
+<array name="courses" table="courses">
+<key column="sid"/>
+<index column="idx"/>
+<element column="cname" type="string"/>
+</array>
+<list name="emails" table="emails">
+<key column="sid"/>
+<index column="idx"/>
+<element column="email" type="string"/>
+</list>
+<bag name="marks" table="marks">
+<key column="sid"/>
+<element column="marks" type="int"/>
+</bag>
+<set name="phones" table="phones">
+<key column="sid"/>
+<element column="phone" type="long"/>
+</set>
+
+</class>
+</hibernate-mapping>
